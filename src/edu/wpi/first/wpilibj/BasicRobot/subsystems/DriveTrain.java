@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.BasicRobot.commands.DriveWithJoysticks;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  *
@@ -16,14 +17,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
     
-
-
+    //Define Encoders
+    private Encoder leftEncoder = new Encoder(RobotMap.leftEncoderA, RobotMap.leftEncoderB);
+    private Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB);
+    
+   // Define speed controllers
     private SpeedController leftMotor = new Victor(RobotMap.leftMotor);
     private SpeedController rightMotor = new Victor(RobotMap.rightMotor);
 
     // Initialize your subsystem here
     public DriveTrain() {
-        super("DriveTrain");  
+        super("DriveTrain");
     }
     
     public void initDefaultCommand() {
@@ -51,6 +55,29 @@ public class DriveTrain extends Subsystem {
         moveLeftMotor(left);
     }
     
+    
+    public void startRightEncoder()
+    {
+        rightEncoder.reset();
+        rightEncoder.start();
+    }
+    
+    public void startLeftEncoder()
+    {
+        leftEncoder.reset();
+        leftEncoder.start();
+    }
+    
+    public double getRightEncoder()
+    {
+        return rightEncoder.getDistance();
+    }
+    
+    public double getLeftEncoder()
+    {
+        return leftEncoder.getDistance();
+    }
+    
     /**
      * 
      * @param speed 
@@ -71,6 +98,5 @@ public class DriveTrain extends Subsystem {
     {
         rightMotor.set(speed);
     }
-
 }
  
