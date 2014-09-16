@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutonomousGroup extends CommandGroup {
     
     public AutonomousGroup() {        
-        // Drive forward for 2.5 seconds
-        addSequential(new DriveForTime(2.5, 0.7, true));
-        // Then stop
-        addSequential(new DriveForTime(0.5, 0.0, false));
+        // Drive forward for 100 mm
+        addSequential(new ReverseDriveForDistance(100));
+        // Drive until 100 mm away
+        addSequential(new DriveUntilDistance(100));
     }
 }

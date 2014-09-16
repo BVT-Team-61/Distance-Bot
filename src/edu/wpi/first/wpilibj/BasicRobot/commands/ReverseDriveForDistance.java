@@ -9,14 +9,14 @@ package edu.wpi.first.wpilibj.BasicRobot.commands;
  * Drive for a specified distance according to rotary encoder.
  * @author OAmour
  */
-public class DriveForDistance extends CommandBase {
+public class ReverseDriveForDistance extends CommandBase {
     
     private static final double threshold = 2.0;
-    private static final double speed = 0.5;
+    private static final double speed = -0.5;
     private double traveled = 0;
     private double target = 0;
     
-    public DriveForDistance( double target ) {
+    public ReverseDriveForDistance( double target ) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(drivetrain);
@@ -33,7 +33,7 @@ public class DriveForDistance extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         drivetrain.tankDrive(speed, speed);
-        traveled = (drivetrain.getLeftEncoder()+drivetrain.getRightEncoder())/2;
+        traveled = -1.0*((drivetrain.getLeftEncoder()+drivetrain.getRightEncoder())/2);
     }
 
     // Make this return true when this Command no longer needs to run execute()

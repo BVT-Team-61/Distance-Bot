@@ -11,6 +11,11 @@ package edu.wpi.first.wpilibj.BasicRobot.commands;
  */
 public class DriveUntilDistance extends CommandBase {
     
+    private static final double threshold = 10.0;
+    private static final double speed = 0.5;
+    private static double target;
+    private static double remaining;
+    
     public DriveUntilDistance( double target ) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -21,20 +26,23 @@ public class DriveUntilDistance extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        remaining = target - sonicarray.getForwardReading();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        drivetrain.tankDrive(0.5, 0.5);
+        drivetrain.tankDrive(speed, speed);
+        remaining = target - sonicarray.getForwardReading();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return remaining < threshold;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        drivetrain.tankDrive(0.0, 0.0);
     }
 
     // Called when another command which requires one or more of the same
