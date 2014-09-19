@@ -25,4 +25,7 @@ public class RobotMap {
     public static final int ultrasonicPing = 5;
     public static final int ultrasonicEcho = 6;
     
+    //Gyro
+    public static final int mainGyro = 1;
+    
 }
