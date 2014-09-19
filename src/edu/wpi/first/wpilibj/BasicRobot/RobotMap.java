@@ -15,17 +15,16 @@ public class RobotMap {
     public static final int leftMotor = 1; // Left motor in port 1
     public static final int rightMotor = 2; // Right motor in port 2
     
-    //Encoders
+    //Digital IO
     public static final int leftEncoderA = 1;
-    public static final int leftEncoderB = 2;
+    public static final int leftEncoderB = 2; 
     public static final int rightEncoderA = 3;
     public static final int rightEncoderB = 4;
-    
-    //Ultrasonic
     public static final int ultrasonicPing = 5;
     public static final int ultrasonicEcho = 6;
+   
     
-    //Gyro
+    //Analog IO
     public static final int mainGyro = 1;
     
 }
