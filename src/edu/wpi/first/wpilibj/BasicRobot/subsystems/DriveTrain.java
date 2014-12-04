@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj.Encoder;
 public class DriveTrain extends Subsystem {
     
     // Distance traveled per encoder pulse
-    // Circumference of wheel / pulses per rotation
-    private static final double dp = 1;
+    // pi * diameter of wheel / pulses per rotation
+    private static final double dp = (3.14*8.5)/360;
     
     //Define Encoders
     private Encoder leftEncoder = new Encoder(RobotMap.leftEncoderA, RobotMap.leftEncoderB);

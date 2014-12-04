@@ -12,16 +12,17 @@ package edu.wpi.first.wpilibj.BasicRobot.commands;
 public class ReverseDriveForDistance extends CommandBase {
     
     private static final double threshold = 2.0;
-    private static final double speed = -0.5;
+    private double speed = -0.1;
     private double traveled = 0;
     private double target = 0;
     
-    public ReverseDriveForDistance( double target ) {
+    public ReverseDriveForDistance( double target, double speed ) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(drivetrain);
         
         this.target = target;
+        this.speed = -1*speed;
     }
 
     // Called just before this Command runs the first time
@@ -34,6 +35,8 @@ public class ReverseDriveForDistance extends CommandBase {
     protected void execute() {
         drivetrain.tankDrive(speed, speed);
         traveled = -1.0*((drivetrain.getLeftEncoder()+drivetrain.getRightEncoder())/2);
+        System.out.print(traveled+" units ");
+        System.out.println((target - traveled)+" units to go");
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -19,8 +19,8 @@ public class OI {
    Joystick jRight = new Joystick(RobotMap.rightStick); 
    
    // Define Joystick Buttons
-   Button forwardButton = new JoystickButton (jRight,2);
-   Button reverseButton = new JoystickButton (jRight,1);
+   Button forwardButton = new JoystickButton(jRight,2);
+   Button reverseButton = new JoystickButton(jRight,1);
    
     // Placeholder method. Does nothing yet.
     public boolean weAreDriving() {
